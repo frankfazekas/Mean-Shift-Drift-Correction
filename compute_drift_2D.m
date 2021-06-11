@@ -25,7 +25,7 @@ function [shifteddata, drift_info] = compute_drift_2D(data, specs, timings)
 %       error estimates for each pairwise shift calculation  
 
 
-% Input: data: A 1xn structure with fields x and y 
+% Input: data: A nx3 matrix with columns x, y, and frame
 % specs: options for the alignment. Fields:
 % npoints_for_alignment. The number of temporal bins into which the data
 % are placed.
@@ -78,7 +78,7 @@ iter_toconverge = zeros(nTimeBin, nTimeBin);
 getnthdata = @(n) data(firstframe(n)<=data(:,3) & data(:,3)<=lastframe(n), :);
 refdata = getnthdata(1);
 
-% broadcorrelate reference data to get a sense for how long the molecules
+% correlate reference data to get a sense for how long the molecules
 % stay on, as well as for the appropriate noutmax
 x1 = refdata(:,1); y1 = refdata(:,2); t1 = refdata(:,3);
 x2 = x1; y2 = y1; t2 = t1;
@@ -150,6 +150,7 @@ parfor i = 1:nTimeBin - 1
             end
         end
     end
+    
     % updating the matrices with the temporary rows
     xshift(i, :) = xshift_temp; yshift(i, :) = yshift_temp;
     dxshift(i, :) = dxshift_temp; dyshift(i, :) = dyshift_temp;

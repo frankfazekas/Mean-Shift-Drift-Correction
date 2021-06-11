@@ -70,7 +70,7 @@ iter_toconverge = zeros(nTimeBin, nTimeBin);
 getnthdata = @(n) data(firstframe(n)<=data(:,4) & data(:,4)<=lastframe(n), :);
 refdata = getnthdata(1);
 
-% broadcorrelate reference data to get a sense for how long the molecules
+% correlate reference data to get a sense for how long the molecules
 % stay on, as well as for the appropriate noutmax
 x1 = refdata(:,1); y1 = refdata(:,2); z1 = refdata(:,3); t1 = refdata(:,4);
 x2 = x1; y2 = y1; z2 = z1; t2 = t1;
@@ -148,6 +148,7 @@ parfor i = 1:nTimeBin - 1
             end
         end
     end
+    
     % updating the matrices with the temporary rows
     xshift(i, :) = xshift_temp; yshift(i, :) = yshift_temp; zshift(i, :) = zshift_temp;
     dxshift(i, :) = dxshift_temp; dyshift(i, :) = dyshift_temp; dzshift(i, :) = dzshift_temp;
@@ -158,7 +159,7 @@ parfor i = 1:nTimeBin - 1
 %     fprintf('Finished with timebin %i\n', i)
 end
 
-% check if median predicted error is > loc_prec/2. If so, we've chosen too
+% check if median predicted error is > loc_prec/4. If so, we've chosen too
 % few frames for alignment.
 
 med_error = median(dxshift(dxshift > 0));

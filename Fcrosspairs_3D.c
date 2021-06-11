@@ -38,8 +38,6 @@ void Fcrosspairs_3D(n1, x1, y1, z1, t1, n2, x2, y2, z2, t2, rmax, taumin, taumax
   
   while (i < n1) {
 
-      /* Possibly check for matlab interrupt. */
-
       for (; i < n1; i++) {
 
           x1i = x1[i];
@@ -109,7 +107,16 @@ void mexFunction(int nlhs, mxArray* plhs[], int nrhs, const mxArray* prhs[])
      * 4    optional error
      */
 
-    
+     /* Check for proper number of arguments. */
+    if (nrhs != 12) {
+     mexErrMsgIdAndTxt("MATLAB:timestwo:invalidNumInputs",
+      "Twelve inputs required.");
+    }
+    else if (nlhs > 5) {
+     mexErrMsgIdAndTxt("MATLAB:timestwo:maxlhs",
+      "Too many output arguments.");
+    }
+
     n1 = mxGetNumberOfElements(prhs[0]);
     n2 = mxGetNumberOfElements(prhs[4]);
 
@@ -142,18 +149,8 @@ void mexFunction(int nlhs, mxArray* plhs[], int nrhs, const mxArray* prhs[])
             rmax, taumin, taumax, noutmax,
             nout, dxout, dyout, dzout, dtout, &status);
 
-   dxout = mxRealloc(dxout, (*nout) * sizeof(double));
-   dyout = mxRealloc(dyout, (*nout) * sizeof(double));
-   dzout = mxRealloc(dzout, (*nout) * sizeof(double));
-   dtout = mxRealloc(dtout, (*nout) * sizeof(double));
-
-   mxSetPr(plhs[0], dxout);
-   mxSetPr(plhs[1], dyout);
-   mxSetPr(plhs[2], dzout);
-   mxSetPr(plhs[3], dtout);
-
-   for (i=0; i<4; i++)
-       mxSetN(plhs[i], *nout);
-   mxSetN(plhs[4], 1);
+    for (i = 0; i < 4; i++)
+        mxSetN(plhs[i], *nout);
+    mxSetN(plhs[4], 1);
 }
   
