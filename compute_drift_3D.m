@@ -159,7 +159,7 @@ parfor i = 1:nTimeBin - 1
 %     fprintf('Finished with timebin %i\n', i)
 end
 
-% check if median predicted error is > loc_prec/4. If so, we've chosen too
+% check if median predicted error is > loc_prec/4. If so, we may have chosen too
 % few frames for alignment.
 
 med_error = median(dxshift(dxshift > 0));

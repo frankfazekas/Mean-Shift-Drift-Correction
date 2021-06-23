@@ -160,8 +160,8 @@ parfor i = 1:nTimeBin - 1
 %     fprintf('Finished with time bin %i\n', i)
 end
 
-% check if the median of the predicted error is > loc_prec/4. If so, some of the
-% alignments may be false peaks
+% check if median predicted error is > loc_prec/4. If so, we may have chosen too
+% few frames for alignment.
 
 med_error = median(dxshift(dxshift > 0));
 if med_error > loc_prec/4

@@ -131,10 +131,10 @@ void mexFunction(int nlhs, mxArray* plhs[], int nrhs, const mxArray* prhs[])
 
     for (i=0; i<3; i++)
         plhs[i] = mxCreateNumericMatrix(1, noutmax, mxDOUBLE_CLASS, mxREAL);
-    plhs[3] = mxCreateNumericMatrix(1, 1, mxINT32_CLASS, mxREAL);
-    dxout = (double *) mxGetPr(plhs[0]);
-    dyout = (double *) mxGetPr(plhs[1]);
-    dtout = (double *) mxGetPr(plhs[2]);
+    plhs[3] = mxCreateNumericMatrix(1, 1, mxINT64_CLASS, mxREAL);
+    dxout = (double *) mxGetData(plhs[0]);
+    dyout = (double *) mxGetData(plhs[1]);
+    dtout = (double *) mxGetData(plhs[2]);
     status = (int) mxGetScalar(plhs[3]);
 
     Fcrosspairs(n1, x1, y1, t1, n2, x2, y2, t2,
@@ -144,5 +144,6 @@ void mexFunction(int nlhs, mxArray* plhs[], int nrhs, const mxArray* prhs[])
     for (i = 0; i < 3; i++)
         mxSetN(plhs[i], *nout);
     mxSetN(plhs[3], 1);
+
 }
   

@@ -6,7 +6,7 @@ data = csvread('Data/NPCdata.csv');
 driftspecs = drift_default_meanshift;
 
 % modify the default options individually in the driftspecs structure
-driftspecs.nTimeBin = 100; % Number of time intervals to divide the data into
+driftspecs.nTimeBin = 25; % Number of time intervals to divide the data into
 driftspecs.rmax = 500; % Maximum pairwise distances extracted
 driftspecs.maxiter = 200; % max iterations for the mean shift algorithm
 driftspecs.calc_error = 1; % provide error estimates for mean shift
@@ -72,7 +72,7 @@ x2_pixel = x2_pixel - 300; y2_pixel = y2_pixel - 300;
 coords = [x2_pixel y2_pixel shifteddata_masked(:,3)];
 
 nblocks = 31;
-nreps = 1;
+nreps = 3;
 superzoom = 20;
 szx = superzoom * 200;
 
