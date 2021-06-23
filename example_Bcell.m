@@ -63,7 +63,7 @@ coords_xy = [x2_pixel y2_pixel shifteddata(:,4)];
 coords_xz = [x2_pixel z2_pixel shifteddata(:,4)];
 
 nblocks = 32;
-nreps = 1;
+nreps = 1; % taking more reps slows down the computation but may improve precision
 superzoom = 10;
 szx = superzoom * 700;
 
