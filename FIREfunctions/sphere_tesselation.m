@@ -21,12 +21,12 @@
 
 function [polang,aziang] = sphere_tesselation(maxlevel)
 % Avoid being in menu
-% if nargin==1
-%    if ischar(varargin{1}) & strcmp(varargin{1},'DIP_GetParamList')
-%       polang = struct('menu','none');
-%       return
-%    end
-% end
+if nargin==1
+   if ischar(varargin{1}) & strcmp(varargin{1},'DIP_GetParamList')
+      polang = struct('menu','none');
+      return
+   end
+end
 if ~isnumeric(maxlevel)
     error('Input must be a positive integer.');
 end

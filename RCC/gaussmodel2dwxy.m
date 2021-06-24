@@ -1,3 +1,5 @@
+% By Yina Wang
+
 function F = gaussmodel2dwxy(a,data);
 
 % Used by the curve fitter to calculate values for a 2d gaussian

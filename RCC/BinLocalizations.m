@@ -1,3 +1,5 @@
+% By Yina Wang
+
 function [ im ] = BinLocalizations( positions, imsize, zoomfactor )
     
 % Offset and rescale positions

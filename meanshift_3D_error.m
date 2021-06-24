@@ -1,3 +1,16 @@
+% Copyright (C) 2021 Frank Fazekas, Thomas Shaw, and Sarah Veatch
+% This file is part of MEAN SHIFT DRIFT CORRECTION.
+% MEAN SHIFT DRIFT CORRECTION is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% MEAN SHIFT DRIFT CORRECTION is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% You should have received a copy of the GNU General Public License
+% along with MEAN SHIFT DRIFT CORRECTION.  If not, see <https://www.gnu.org/licenses/>
+
 function [dxshift, dyshift, dzshift, ntruepairs, nfalsepairs, zntruepairs, znfalsepairs, loc_error, zloc_error] = meanshift_3D_error(dx, dy, dz, xshift, yshift, zshift, delta, rmax, rho, ndata1, ndata2, mean_nframeson, loc_prec, zloc_prec)
 % Provides an error estimate for the 2D mean shift approach
 closei_forr = find(abs(dz - zshift(end)) < delta);

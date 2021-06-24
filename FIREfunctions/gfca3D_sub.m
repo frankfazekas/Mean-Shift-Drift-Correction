@@ -113,8 +113,8 @@ sinazi = sin(azim_ang);
 fprintf('Rotating..\n')
 fpc_out = zeros(numel(pol_ang),Np);
 
-% matlabpool(4)
-for jj=1:numel(pol_ang)
+matlabpool(4)
+parfor jj=1:numel(pol_ang)
   fprintf('%d of %d\n',jj,numel(pol_ang))
   Rz = [cosazi(jj),sinazi(jj),0;-sinazi(jj),cosazi(jj),0;0,0,1];
   Ry = [cospol(jj),0,-sinpol(jj);0,1,0;sinpol(jj),0,cospol(jj)];
@@ -130,7 +130,7 @@ for jj=1:numel(pol_ang)
   h22av = squeeze(sum(h22rot,[],[1,2]));
   fpc_out(jj,:) = im2mat(h12av./sqrt(h11av)./sqrt(h22av));
 end
-% matlabpool close
+matlabpool close
 % Correct for q = 0
 % fpc(:,Np/2+1) = 1.0;
 

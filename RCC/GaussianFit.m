@@ -1,3 +1,5 @@
+% By Yina Wang
+
 function [ y, x ] = GaussianFit( corrfunc )
     
     [ guess ] = FitInitialGuess( corrfunc, 48 );
@@ -13,8 +15,7 @@ function [ y, x ] = GaussianFit( corrfunc )
     yoffset = guess(4) - radiu - 1;
     guess(3) = radiu + 1;
     guess(4) = radiu + 1;
-    options = optimset('Display','off');
-    [opt,norm] = lsqcurvefit(@gaussmodel2dwxy, guess, grid, fitdata, [], [], options);
+    [opt,norm] = lsqcurvefit(@gaussmodel2dwxy, guess, grid, fitdata);
 
     x = opt(3) + xoffset;
     y = opt(4) + yoffset;

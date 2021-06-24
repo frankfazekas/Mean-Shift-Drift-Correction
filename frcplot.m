@@ -1,3 +1,24 @@
+% Copyright (C) 2021 Frank Fazekas
+% This file is part of MEAN SHIFT DRIFT CORRECTION.
+% MEAN SHIFT DRIFT CORRECTION is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% MEAN SHIFT DRIFT CORRECTION is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% You should have received a copy of the GNU General Public License
+% along with MEAN SHIFT DRIFT CORRECTION.  If not, see <https://www.gnu.org/licenses/>
+
+% (C) Copyright 2012               Quantitative Imaging Group
+%     All rights reserved          Faculty of Applied Physics
+%                                  Delft University of Technology
+%                                  Lorentzweg 1
+%                                  2628 CJ Delft
+%                                  The Netherlands
+% Robert Nieuwenhuizen, Oct 2012
+
 function frcplot(fire_value, fireL, fireH, pixelsize, superzoom, frc_curve)
 
 fprintf('FIRE value %2.1f +- %2.2f [px]\n', fire_value, (fireL-fireH)/2);

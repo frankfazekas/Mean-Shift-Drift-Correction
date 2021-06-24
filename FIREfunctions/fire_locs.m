@@ -148,8 +148,8 @@ end
 im_out = mat2im(binlocalizations(positions, sz(1), sz(2), zoomfactor));
     
 if show_im
-%     h=dipshow(gaussf(im_out,1));
-%     dipmapping(h,'colormap',hot)
+    h=dipshow(gaussf(im_out,1));
+    dipmapping(h,'colormap',hot)
 end
 
 % Plot FRC curve

@@ -1,3 +1,5 @@
+% By Yina Wang
+
 function [ guess ] = FitInitialGuess( corrfunc, peakfindsize )
 
     n = size(corrfunc,1)/2;

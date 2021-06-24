@@ -185,16 +185,16 @@ end
 % Use for loop or parfor loop
 if TB_distcomp
     
-%     % Open a pool of workers if necessary
-%     if ~matlabpool('size')
-%         tmp = findResource('scheduler','type','local');
-%         c_size = tmp.ClusterSize;
-%         if c_size > 2
-%             matlabpool(c_size-2)
-%         end
-%     end
+    % Open a pool of workers if necessary
+    if ~matlabpool('size')
+        tmp = findResource('scheduler','type','local');
+        c_size = tmp.ClusterSize;
+        if c_size > 2
+            matlabpool(c_size-2)
+        end
+    end
 
-    for nn = 1:length(timefractions)
+    parfor nn = 1:length(timefractions)
         % Select positions up to given fractions of time
         if ndims(positions)==2
             positions_tmp = positions(1:ceil(timefractions(nn)*N),:);

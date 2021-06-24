@@ -1,3 +1,5 @@
+% By Yina Wang
+
 function [ y,x ] = ZeroPaddingFFT( corr, subboxsize, paddingfactor )
 
 %crop out the correlation peak
